@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     :execution_position => :before_compile,
     :name => 'Download NNUE files',
     :script => <<-SCRIPT
-      [ -e 'nn-1111cefa1111.nnue' ] || curl --location --remote-name 'https://tests.stockfishchess.org/api/nn/nn-1111cefa1111.nnue' &&
+      [ -e 'nn-c288c895ea92.nnue' ] || curl --location --remote-name 'https://tests.stockfishchess.org/api/nn/nn-c288c895ea92.nnue' &&
       [ -e 'nn-37f18f62d772.nnue' ] || curl --location --remote-name 'https://tests.stockfishchess.org/api/nn/nn-37f18f62d772.nnue'
     SCRIPT
   }
