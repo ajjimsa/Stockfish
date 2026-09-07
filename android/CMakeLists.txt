@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 file(GLOB_RECURSE cppPaths "../ios/Stockfish/src/*.cpp")
+# src/universal/ solo sirve para los binarios universales de escritorio (usa #embed C++26)
+list(FILTER cppPaths EXCLUDE REGEX "/universal/")
 add_library(
   stockfish
   SHARED
@@ -35,9 +37,6 @@ else()
   )
 endif()
 
-# Los NNUE que ya tenías
-file(DOWNLOAD https://tests.stockfishchess.org/api/nn/nn-c288c895ea92.nnue
-  ${CMAKE_BINARY_DIR}/nn-c288c895ea92.nnue)
-
-file(DOWNLOAD https://tests.stockfishchess.org/api/nn/nn-37f18f62d772.nnue
-  ${CMAKE_BINARY_DIR}/nn-37f18f62d772.nnue)
+# Red NNUE de Stockfish 19 (una sola red; EvalFileDefaultName en src/evaluate.h)
+file(DOWNLOAD https://tests.stockfishchess.org/api/nn/nn-1a298aa575a0.nnue
+  ${CMAKE_BINARY_DIR}/nn-1a298aa575a0.nnue)

@@ -47,3 +47,7 @@
 ## [1.6.0] - 18 April 2024
 
 * Switch to Stockfish 16 for smaller app size
+
+## [1.9.0] - 7 Sep 2026
+
+* Update to Stockfish 19 (single NNUE net nn-1a298aa575a0; src/universal excluded from the build).

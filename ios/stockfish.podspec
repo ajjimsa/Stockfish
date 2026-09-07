@@ -17,10 +17,10 @@ Pod::Spec.new do |s|
   s.source = { :git => pubspec['repository'], :tag => s.version.to_s }
   s.source_files = 'Classes/**/*', 'FlutterStockfish/*', 'Stockfish/src/**/*'
   s.public_header_files = 'Classes/**/*.h'
-  s.exclude_files = 'Stockfish/src/incbin/UNLICENCE'
+  s.exclude_files = ['Stockfish/src/incbin/UNLICENCE', 'Stockfish/src/universal/**/*']
   s.dependency 'Flutter'
-  s.platform = :ios, '12.0'
-  s.ios.deployment_target  = '12.0'
+  s.platform = :ios, '13.0'
+  s.ios.deployment_target  = '13.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
@@ -31,8 +31,7 @@ Pod::Spec.new do |s|
     :execution_position => :before_compile,
     :name => 'Download NNUE files',
     :script => <<-SCRIPT
-      [ -e 'nn-c288c895ea92.nnue' ] || curl --location --remote-name 'https://tests.stockfishchess.org/api/nn/nn-c288c895ea92.nnue' &&
-      [ -e 'nn-37f18f62d772.nnue' ] || curl --location --remote-name 'https://tests.stockfishchess.org/api/nn/nn-37f18f62d772.nnue'
+      [ -e 'nn-1a298aa575a0.nnue' ] || curl --location --remote-name 'https://tests.stockfishchess.org/api/nn/nn-1a298aa575a0.nnue'
     SCRIPT
   }
 
